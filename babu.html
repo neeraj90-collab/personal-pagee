@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I Love You Noni</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe6f0;
+      padding-top: 50px;
+      transition: all 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #d63384;
+    }
+
+    .emoji {
+      font-size: 2rem;
+    }
+
+    .btn {
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .no {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .heart-dance {
+      font-size: 3rem;
+      animation: dance 1s infinite;
+    }
+
+    @keyframes dance {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.3) rotate(-15deg); }
+      75% { transform: scale(1.1) rotate(15deg); }
+    }
+
+    .sad {
+      background-color: #1c1c1c;
+      color: white;
+    }
+
+    .heart-character {
+      font-size: 3rem;
+      animation: walk 2s ease-in-out forwards;
+      margin-top: 30px;
+    }
+
+    @keyframes walk {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="message">I love you noni <br/>( not as a friend )</h1>
+  <div id="buttons">
+    <button class="btn yes" onclick="yesClicked()">Aho</button>
+    <button class="btn no" onclick="challClicked()">Challl</button>
+  </div>
+  <div id="heart-area"></div>
+
+  <audio id="romanticMusic" src="romantic.mp3"></audio>
+
+  <script>
+    function yesClicked() {
+      document.body.className = "";
+      document.getElementById("message").innerText = "Wooohooo! Let's dance! 💃🕺";
+      document.getElementById("buttons").innerHTML = "";
+      document.getElementById("heart-area").innerHTML = `<div class="heart-dance">❤️💃❤️🕺❤️</div>`;
+      document.getElementById("romanticMusic").play();
+    }
+
+    function challClicked() {
+      document.getElementById("message").innerHTML = "Ek baar or soch lo <span class='emoji'>🤔</span>";
+      document.getElementById("buttons").innerHTML = `
+        <button class="btn yes" onclick="yesClicked()">Ha</button>
+        <button class="btn no" onclick="naClicked()">Na</button>
+      `;
+    }
+
+    function naClicked() {
+      document.getElementById("message").innerHTML = "Please <span class='emoji'>🥺</span>";
+      document.getElementById("buttons").innerHTML = `
+        <button class="btn yes" onclick="yesClicked()">Thik hai, ha</button>
+        <button class="btn no" onclick="finalNo()">Na hi!</button>
+      `;
+    }
+
+    function finalNo() {
+      document.body.className = "sad";
+      document.getElementById("message").innerText = "Dil tod diya zalim 💔";
+      document.getElementById("buttons").innerHTML = "";
+      document.getElementById("heart-area").innerHTML = `
+        <div class="heart-character">💔➡️❤️‍🩹<br><small>chhota heart leke toda</small></div>
+        <iframe width="300" height="170" src="https://www.youtube.com/embed/dV1LrqeFAGg?autoplay=1" allow="autoplay"></iframe>
+      `;
+    }
+  </script>
+</body>
+</html>
